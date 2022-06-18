@@ -16,5 +16,5 @@ spring:
 #      enabled: true
 #      path: /test-console
 app:
-  name: Pradyumna
+  name: Spring
 
