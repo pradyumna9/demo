@@ -3,7 +3,6 @@ package com.example.demo.api;
 
 import com.example.demo.Repo.PropertyRepo;
 import com.example.demo.entity.Property;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
