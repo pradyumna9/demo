@@ -5,6 +5,7 @@ import com.example.demo.entity.Property;
 import com.example.demo.exception.InternalStandardErrors;
 import com.example.demo.exception.PropertyNotFoundException;
 import com.example.demo.model.Agent;
+import com.example.demo.model.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,9 @@ public class PropertyController {
 
     @Autowired
     private Agent agent;
+
+    @Autowired
+    private Server server;
 
     @PostMapping("/save-property")
     public Property saveProperty(@RequestBody Property property){

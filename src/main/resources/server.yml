@@ -1,0 +1,16 @@
+server:
+  applicationPortMap:
+    MMS: 1234
+    CTBS: 6789
+    MKS: 7897
+  configMap:
+    EUREKA: ["1001","2001","3001"]
+    GOS: ["500","600","700"]
+    LB: ["50011","60110","71100"]
+  credentialMap:
+    ORACLE:
+      username: dipu
+      password: dipu
+    CASSANDRA:
+      username: baby
+      password: baby
