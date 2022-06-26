@@ -4,6 +4,7 @@ import com.example.demo.Repo.PropertyRepo;
 import com.example.demo.entity.Property;
 import com.example.demo.exception.InternalStandardErrors;
 import com.example.demo.exception.PropertyNotFoundException;
+import com.example.demo.model.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,9 @@ public class PropertyController {
     @Autowired
     private PropertyRepo propertyRepo;
 
+    @Autowired
+    private Agent agent;
+
     @PostMapping("/save-property")
     public Property saveProperty(@RequestBody Property property){
         return propertyRepo.save(property);
@@ -24,14 +28,14 @@ public class PropertyController {
 
     @GetMapping("/getAllProperty")
     public List<Property> getAllProperty(){
-       return (List<Property>) propertyRepo.findAll();
+        System.out.println("agent Name: "+  agent.getName());
+        return (List<Property>) propertyRepo.findAll();
     }
 
     @GetMapping("/getPropertyByPid")
     public Property getPropertyById(@RequestParam String propertyId){
         return getPropertyFromOptional(propertyId)
                 .orElseThrow( ()-> new PropertyNotFoundException(InternalStandardErrors.PROPERTY_NOT_FOUND));
-
     }
 
     private Optional<Property> getPropertyFromOptional(String propertyId) {

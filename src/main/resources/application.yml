@@ -17,4 +17,7 @@ spring:
 #      path: /test-console
 app:
   name: Spring
-
+agent:
+  name: Pradyumna
+  address: Motanga
+  code: 121
