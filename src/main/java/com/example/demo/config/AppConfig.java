@@ -4,10 +4,7 @@ import com.example.demo.model.Agent;
 import com.example.demo.model.Server;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
+import org.springframework.context.annotation.*;
 
 @Data
 @Configuration
@@ -18,7 +15,14 @@ public class AppConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "agent")
-    public Agent getAgent(){
+    public Agent dipuAgent(){
+        return new Agent();
+    }
+
+
+    @Bean("baby")
+    @ConfigurationProperties(prefix = "agent")
+    public Agent babyAgent(){
         return new Agent();
     }
 
