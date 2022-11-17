@@ -1,5 +1,8 @@
 
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:testdb
@@ -11,4 +14,5 @@ spring:
       path: /test-console
 
 app:
-  name: Spring
+  name: Pradyumna-Local
+

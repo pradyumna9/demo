@@ -6,23 +6,22 @@ import com.example.demo.exception.InternalStandardErrors;
 import com.example.demo.exception.PropertyNotFoundException;
 import com.example.demo.model.Agent;
 import com.example.demo.model.Server;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @RestController
 public class PropertyController {
-
-    //private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(PropertyController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PropertyController.class);
     private final PropertyRepo propertyRepo;
     private final Agent agent;
     private final Server server;
 
-    public PropertyController(PropertyRepo propertyRepo,@Qualifier("baby") Agent agent, Server server) {
+    public PropertyController(PropertyRepo propertyRepo, @Qualifier("baby") Agent agent, Server server) {
         this.propertyRepo = propertyRepo;
         this.agent = agent;
         this.server = server;
@@ -35,7 +34,7 @@ public class PropertyController {
 
     @GetMapping("/getAllProperty")
     public List<Property> getAllProperty(){
-       // LOGGER.info("agent Name: "+agent.getName());
+        LOGGER.info("agent Name: "+agent.getName());
         return (List<Property>) propertyRepo.findAll();
     }
 

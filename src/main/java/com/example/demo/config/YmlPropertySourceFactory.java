@@ -7,6 +7,7 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.core.io.support.PropertySourceFactory;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 public class YmlPropertySourceFactory implements PropertySourceFactory {
@@ -15,10 +16,6 @@ public class YmlPropertySourceFactory implements PropertySourceFactory {
         YamlPropertiesFactoryBean  yamlPropertiesFactoryBean = new YamlPropertiesFactoryBean();
         yamlPropertiesFactoryBean.setResources(resource.getResource());
         Properties properties = yamlPropertiesFactoryBean.getObject();
-        return new PropertiesPropertySource("props",properties);
-//        YamlMapFactoryBean yamlMapFactoryBean = new YamlMapFactoryBean();
-//        yamlMapFactoryBean.setResources(resource.getResource());
-//        Map<String,Object> map = yamlMapFactoryBean.getObject();
-//        return new MapPropertySource("maps",map);
+        return new PropertiesPropertySource(Objects.requireNonNull(resource.getResource().getFilename()),properties);
     }
 }
