@@ -15,4 +15,5 @@ spring:
 
 app:
   name: Pradyumna-Local
+  server: s1
 

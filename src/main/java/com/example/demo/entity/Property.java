@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import com.fasterxml.classmate.GenericType;
+import io.swagger.annotations.ApiModelProperty;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +25,7 @@ public class Property {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
+    @ApiModelProperty(hidden = true)
     private String propertyId;
     private String propertyName;
     private String agentName;

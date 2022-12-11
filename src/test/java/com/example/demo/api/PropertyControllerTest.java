@@ -26,4 +26,6 @@ public class PropertyControllerTest {
        Property property1 =  propertyController.saveProperty(property);
        Mockito.verify(propertyRepo,Mockito.times(1)).save(any(Property.class));
     }
+
+
 }

@@ -6,6 +6,8 @@ import com.example.demo.exception.InternalStandardErrors;
 import com.example.demo.exception.PropertyNotFoundException;
 import com.example.demo.model.Agent;
 import com.example.demo.model.Server;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@ApiOperation("Property API")
 public class PropertyController {
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyController.class);
     private final PropertyRepo propertyRepo;
@@ -28,6 +31,7 @@ public class PropertyController {
     }
 
     @PostMapping("/save-property")
+    @ApiOperation(value = "CREATE PROPERTY", httpMethod = "POST", nickname = "CREATE")
     public Property saveProperty(@RequestBody Property property){
         return propertyRepo.save(property);
     }
