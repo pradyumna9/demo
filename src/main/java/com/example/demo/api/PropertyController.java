@@ -5,9 +5,11 @@ import com.example.demo.entity.Property;
 import com.example.demo.exception.InternalStandardErrors;
 import com.example.demo.exception.PropertyNotFoundException;
 import com.example.demo.model.Agent;
+import com.example.demo.model.CountryMap;
+import com.example.demo.model.Notifiable;
 import com.example.demo.model.Server;
+import com.example.demo.service.NotificationService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,11 +25,15 @@ public class PropertyController {
     private final PropertyRepo propertyRepo;
     private final Agent agent;
     private final Server server;
+    private final CountryMap countryMap;
+    private final NotificationService notificationService;
 
-    public PropertyController(PropertyRepo propertyRepo, @Qualifier("baby") Agent agent, Server server) {
+    public PropertyController(PropertyRepo propertyRepo, @Qualifier("baby") Agent agent, Server server, CountryMap countryMap, NotificationService notificationService) {
         this.propertyRepo = propertyRepo;
         this.agent = agent;
         this.server = server;
+        this.countryMap = countryMap;
+        this.notificationService = notificationService;
     }
 
     @PostMapping("/save-property")
@@ -40,6 +46,13 @@ public class PropertyController {
     public List<Property> getAllProperty(){
         LOGGER.info("agent Name: "+agent.getName());
         return (List<Property>) propertyRepo.findAll();
+    }
+
+    @PostMapping("/notify")
+    public String sendNotification(@RequestBody Notifiable notifiable){
+        LOGGER.info("Parent Thread:"+Thread.currentThread().getName());
+        String message =  notificationService.sendNotification(notifiable);
+        return "Successfully Send Notification";
     }
 
     @GetMapping("/getPropertyByPid")

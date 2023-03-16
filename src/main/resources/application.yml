@@ -16,4 +16,5 @@ spring:
 app:
   name: Pradyumna-Local
   server: s1
-
+con:
+  game: test

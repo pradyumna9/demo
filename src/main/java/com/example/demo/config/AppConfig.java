@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import com.example.demo.model.Agent;
+import com.example.demo.model.CountryMap;
 import com.example.demo.model.Server;
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -26,7 +27,11 @@ public class AppConfig {
         return new Agent();
     }
 
-
+    @Bean
+    @ConfigurationProperties(prefix = "con")
+    public CountryMap getCountryMap(){
+        return new CountryMap();
+    }
 
     @Bean("baby")
     @ConfigurationProperties(prefix = "agent")
